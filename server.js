@@ -1,12 +1,19 @@
 const express = require("express");
 const mysql = require("mysql");
 const inquirer = require('inquirer');
-const db = require("./db");
 const cTable = require('console.table');
+var CFonts = require("cfonts");
 
-const port = process.env.PORT;
-
-const app = express();
+CFonts.say('Employee|Manager!', {
+    font: 'block',
+    align: 'center',
+    colors: ['system'],
+    background: 'transparent',
+    letterSpacing: 1,
+    lineHeight: 1,
+    space: true,
+    maxLength: '0',
+});
 
 const connection = mysql.createConnection({
     host: "localhost",
