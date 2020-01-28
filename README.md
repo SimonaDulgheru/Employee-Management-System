@@ -22,3 +22,6 @@ As a business owner I want to be able to view and manage the departments, roles,
 - Delete departments, roles, and employees;
 
 ## Preview 
+
+![Employee Management System](https://user-images.githubusercontent.com/48987979/73276538-c31a9380-41e0-11ea-8eda-51f6114c9121.gif)
+
