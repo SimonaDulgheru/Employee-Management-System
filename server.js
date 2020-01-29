@@ -1,7 +1,8 @@
-var mysql = require("mysql");
-var inquirer = require("inquirer");
-var table = require("console.table");
-var CFonts = require("cfonts");
+const mysql = require("mysql");
+const inquirer = require("inquirer");
+// const table = require("console.table");
+const CFonts = require("cfonts");
+const dotenv = require(`dotenv`).config();
 
 CFonts.say('Employee|Manager!', {
     font: 'block',
@@ -16,11 +17,11 @@ CFonts.say('Employee|Manager!', {
 
 
 //Creating database connection
-var connection = mysql.createConnection({
+const connection = mysql.createConnection({
     host: "localhost",
     port: process.env.PORT || 3306,
     user: "root",
-    password: "test",
+    password: process.env.DEV_PASSWORD,
     database: "employees"
 });
 
@@ -180,7 +181,7 @@ function addEmployee() {
         ])
         .then(function (answer) {
 
-            var dept_id;
+            let dept_id;
             if (answer.dept === "HR") {
                 dept_id = 1;
             }
@@ -205,7 +206,7 @@ function addEmployee() {
                 }
             );
 
-            var manager_id;
+            let manager_id;
             if (answer.manager === "Katie") {
                 manager_id = 1;
             }
@@ -222,7 +223,7 @@ function addEmployee() {
                 manager_id = null;
             }
 
-            var role_id;
+            let role_id;
             if (answer.title === "HR Manager") {
                 role_id = 1;
             }
@@ -268,9 +269,9 @@ function addEmployee() {
 function updateRole() {
     connection.query("SELECT id, first_name, last_name FROM employee", function (err, result) {
         if (err) throw err;
-        var choiceArray = [];
-        for (var i = 0; i < result.length; i++) {
-            var choices = result[i].id;
+        const choiceArray = [];
+        for (let i = 0; i < result.length; i++) {
+            const choices = result[i].id;
             choiceArray.push(choices);
         }
         questions = [
